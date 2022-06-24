@@ -13,7 +13,8 @@ RUN apt -qq install -y --no-install-recommends \
     wget \
     ffmpeg \
     rclone \
-    wget2
+    wget2 \
+    aria2
 
 # install chrome
 RUN mkdir -p /tmp/ && \
