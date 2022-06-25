@@ -11,13 +11,12 @@ RUN apt-get -qq install -y --no-install-recommends \
     git \
     gnupg \
     unzip \
-    wget \
-    ffmpeg
+    wget
 
 # install chrome
 RUN mkdir -p /tmp/ && \
     cd /tmp/ && \
-    wget http://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
     # -f ==> is required to --fix-missing-dependancies
     dpkg -i ./google-chrome-stable_current_amd64.deb; apt -fqqy install && \
     # clean up the container "layer", after we are done
