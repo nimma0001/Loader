@@ -5,7 +5,7 @@ FROM python:3.9
 WORKDIR /app/
 
 RUN apt -qq update
-RUN apt-get -qq install -y --no-install-recommends \
+RUN apt-get install -y --no-install-recommends \
     curl \
     git \
     gnupg2 \
