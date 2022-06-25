@@ -3,8 +3,12 @@ FROM python:3.9
 
 # set the working directory in the container
 WORKDIR /app/
-
+RUN set -x \
+    && add-apt-repository ppa:mc3man/trusty-media \
+    && apt-get update \
+    && apt-get dist-upgrade
 RUN apt-get -y update
+RUN apt-get -y upgrade
 RUN apt -qq install -y --no-install-recommends \
     curl \
     git \
