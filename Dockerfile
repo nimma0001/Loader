@@ -10,8 +10,7 @@ RUN apt -qq install -y --no-install-recommends \
     git \
     gnupg \
     unzip \
-    wget \
-    ffmpeg
+    wget 
 
 # install chrome
 RUN mkdir -p /tmp/ && \
