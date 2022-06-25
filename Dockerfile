@@ -4,8 +4,7 @@ FROM python:3.9
 # set the working directory in the container
 WORKDIR /app/
 
-RUN apt -qq update
-RUN apt-transport-https -y
+RUN apt-get -y update
 RUN apt -qq install -y --no-install-recommends \
     curl \
     git \
