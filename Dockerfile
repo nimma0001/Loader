@@ -5,6 +5,7 @@ FROM python:3.9
 WORKDIR /app/
 
 RUN apt -qq update
+RUN apt-transport-https -y
 RUN apt -qq install -y --no-install-recommends \
     curl \
     git \
