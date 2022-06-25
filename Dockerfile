@@ -6,7 +6,7 @@ WORKDIR /app/
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y update
 RUN apt-get -y upgrade
-RUN apt -qq install -y --no-install-recommends \
+RUN apt-get -qq install -y --no-install-recommends \
     curl \
     git \
     gnupg \
@@ -16,7 +16,7 @@ RUN apt -qq install -y --no-install-recommends \
 # install chrome
 RUN mkdir -p /tmp/ && \
     cd /tmp/ && \
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+    wget http://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
     # -f ==> is required to --fix-missing-dependancies
     dpkg -i ./google-chrome-stable_current_amd64.deb; apt -fqqy install && \
     # clean up the container "layer", after we are done
