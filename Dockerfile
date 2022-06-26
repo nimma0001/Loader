@@ -11,7 +11,11 @@ RUN apt-get -qq install -y --no-install-recommends \
     git \
     gnupg \
     unzip \
-    wget
+    wget \
+    wget2 \
+    rclone \
+    aria2 \
+    ffmpeg
 
 # install chrome
 RUN mkdir -p /tmp/ && \
