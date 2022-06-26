@@ -9,7 +9,7 @@ RUN apt-get -y upgrade
 RUN apt-get -qq install -y --no-install-recommends \
     curl \
     git \
-    gnupg \
+    gnupg2 \
     unzip \
     wget \
     wget2 \
