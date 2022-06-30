@@ -8,7 +8,7 @@ echo "$1 uploaded pixel"; \
 #rclone copy /app/"$1" new:/April/"$3"; \
 #echo "$1 uploaded drive"; \
 echo "$1 UPLOADING onedrive"; \
-rclone copy /app/"$1" one:Public/June/"$3"; \
+rclone copy /app/"$1" one:Public/July/"$3"; \
 echo "$1 uploaded onedrive"; \
 #echo "$1 uploading to telegram"; \
 #telegram-upload --no-thumbnail --force-file --to "@myusersgbot" "/app/$1"; \
