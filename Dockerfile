@@ -1,4 +1,4 @@
-# set base image (host OS)
+ # set base image (host OS)
 FROM python:3.9
 #
 # set the working directory in the container
@@ -15,7 +15,8 @@ RUN apt-get -qq install -y --no-install-recommends \
     wget2 \
     rclone \
     aria2 \
-    ffmpeg
+    ffmpeg \
+    htop
 
 # install chrome
 RUN mkdir -p /tmp/ && \
