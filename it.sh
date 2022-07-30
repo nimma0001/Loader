@@ -7,8 +7,7 @@ api[5]="5e6b4c02-09a7-4736-9c75-27dd6855c9e4"
 api[6]="2dc2c4f1-671c-426e-b01b-735c3b3f6a06"
 rand=$[$RANDOM % ${#api[@]}]
 echo "$1 uploading pixel"; \
-curl -o upload.txt -#  https://pixeldrain.com/api/file/ -u:${api[$rand]} --upload-file "$1"; \
-rm upload.txt; \
+curl https://pixeldrain.com/api/file/ -u:${api[$rand]} --upload-file "$1"; \
 echo "$1 uploaded pixel drain"; \
 echo "$1 UPLOADING onedrive"; \
 rclone copy /app/"$1" one:Public/July/"$2"; \
