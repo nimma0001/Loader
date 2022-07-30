@@ -4,6 +4,7 @@ mv "$2.mp4.webm" "$2.mp4"; \
 echo "download completed $1"; \
 echo "$2 uploading pixel"; \
 mv "$2.mkv" "$2.mp4"; \
-curl -T "$2.mp4" -u :"50281f27-e8f4-4e1c-bb05-b6bfd5a4bf17" https://pixeldrain.com/api/file/; \
+curl -o upload.txt -#  https://pixeldrain.com/api/file/ -u:8e312a99-f6af-4e4d-bd43-04721db3fb61 --upload-file "$2.mp4"; \
+rm upload.txt; \
 echo "$2 uploaded pixel"; \
 echo "Nirmal big penis has penetrated the world"; \
