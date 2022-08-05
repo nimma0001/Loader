@@ -27,7 +27,7 @@ while IFS= read -r line
 do
   echo "ytplaylist/$line"
   #uploading to gofile
-  curl -F folderId=c2bd85a0-c903-43d2-ad97-c602264f59ca -F token=oW4ByRUjVR0BWejW1UY4fsagfRSedgLk -F file=@"ytplaylist/$line" https://$serv.gofile.io/uploadFile
+  curl -F folderId=ec36a95d-fb25-489c-ab70-70bcf08cdbd5 -F token=oW4ByRUjVR0BWejW1UY4fsagfRSedgLk -F file=@"ytplaylist/$line" https://$serv.gofile.io/uploadFile
 done < "$input"
 rm -rf ytplaylist/*
 echo "done 720p"
