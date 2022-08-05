@@ -7,7 +7,7 @@ echo downloading 480p
 yt-dlp -f 'bv*[height=480]+ba' $1 -P ytplaylist -o '%(title)s%(resolution)s.%(ext)s'
 #uplpading 480p
 cd ytplaylist && find *.* | sed ':g' > playlist.txt && cd
-input="ytplaylist/playlist.txt" && cd
+input="ytplaylist/playlist.txt"
 echo uploading 480p
 while IFS= read -r line
 do
@@ -15,14 +15,13 @@ do
   #uploading to gofile
   curl -F folderId=6360ad17-a0aa-4eb1-9c10-09ea9512da63 -F token=oW4ByRUjVR0BWejW1UY4fsagfRSedgLk -F file=@"ytplaylist/$line" https://$serv.gofile.io/uploadFile
 done < "$input"
-rm -rf ytplaylist/
+rm -rf ytplaylist/*
 echo "done 480p"
 #uploading 720p
 echo downloading 720p
-mkdir -p ytplaylist
 yt-dlp -f 'bv*[height=720]+ba' $1 -P ytplaylist -o '%(title)s%(resolution)s.%(ext)s'
-cd ytplaylist && find *.* | sed ':g' > ytplaylist.txt && cd
-input="ytplaylist/playlist.txt" && cd
+cd ytplaylist && find *.* | sed ':g' > playlist.txt && cd
+input="ytplaylist/playlist.txt"
 echo uploading 720p
 while IFS= read -r line
 do
@@ -30,14 +29,13 @@ do
   #uploading to gofile
   curl -F folderId=c2bd85a0-c903-43d2-ad97-c602264f59ca -F token=oW4ByRUjVR0BWejW1UY4fsagfRSedgLk -F file=@"ytplaylist/$line" https://$serv.gofile.io/uploadFile
 done < "$input"
-rm -rf ytplaylist/
+rm -rf ytplaylist/*
 echo "done 720p"
 #uploadong 1080p
-mkdir -p ytplaylist
 echo downloading 1080p videos
 yt-dlp -f 'bv*[height=1080]+ba' $1 -P ytplaylist -o '%(title)s%(resolution)s.%(ext)s'
-cd ytplaylist && find *.* | sed ':g' > ytplaylist.txt && cd
-input="ytplaylist/playlist.txt" && cd
+cd ytplaylist && find *.* | sed ':g' > playlist.txt && cd
+input="ytplaylist/playlist.txt"
 echo uploading 1080p
 while IFS= read -r line
 do
@@ -45,5 +43,6 @@ do
   #uploading to gofile
   curl -F folderId=c21ef52c-ac28-4322-a4fa-7d9224490b79 -F token=oW4ByRUjVR0BWejW1UY4fsagfRSedgLk -F file=@"ytplaylist/$line" https://$serv.gofile.io/uploadFile
 done < "$input"
+rm -rf ytplaylist/*
 echo "Done 1080p "
 #starting loop for uploading
