@@ -1,6 +1,4 @@
 #getting data server
-curl https://api.gofile.io/getServer > out.json
-serv="$(jq -r '.data.server' out.json)"
 #downloading yt-playlist 480,720,1080
 mkdir -p ytplaylist
 echo downloading 480p
@@ -13,7 +11,7 @@ while IFS= read -r line
 do
   echo "ytplaylist/$line"
   #uploading to gofile
-  curl -F folderId=6360ad17-a0aa-4eb1-9c10-09ea9512da63 -F token=oW4ByRUjVR0BWejW1UY4fsagfRSedgLk -F file=@"ytplaylist/$line" https://$serv.gofile.io/uploadFile
+  curl https://pixeldrain.com/api/file/ -u:8e312a99-f6af-4e4d-bd43-04721db3fb61 --upload-file "ytplaylist/$line"; \
 done < "$input"
 rm -rf ytplaylist/*
 echo "done 480p"
@@ -27,7 +25,7 @@ while IFS= read -r line
 do
   echo "ytplaylist/$line"
   #uploading to gofile
-  curl -F folderId=ec36a95d-fb25-489c-ab70-70bcf08cdbd5 -F token=oW4ByRUjVR0BWejW1UY4fsagfRSedgLk -F file=@"ytplaylist/$line" https://$serv.gofile.io/uploadFile
+  curl https://pixeldrain.com/api/file/ -u:8e312a99-f6af-4e4d-bd43-04721db3fb61 --upload-file "ytplaylist/$line"; \
 done < "$input"
 rm -rf ytplaylist/*
 echo "done 720p"
@@ -41,7 +39,7 @@ while IFS= read -r line
 do
   echo "ytplaylist/$line"
   #uploading to gofile
-  curl -F folderId=c21ef52c-ac28-4322-a4fa-7d9224490b79 -F token=oW4ByRUjVR0BWejW1UY4fsagfRSedgLk -F file=@"ytplaylist/$line" https://$serv.gofile.io/uploadFile
+  curl https://pixeldrain.com/api/file/ -u:8e312a99-f6af-4e4d-bd43-04721db3fb61 --upload-file "ytplaylist/$line"; \
 done < "$input"
 rm -rf ytplaylist/*
 echo "Done 1080p "
