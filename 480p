@@ -2,7 +2,7 @@ mkdir -p ytplaylist
 echo downloading 480p
 yt-dlp -f 'bv*[height=480]+ba' $1 -P ytplaylist -o '%(title)s%(resolution)s.%(ext)s'
 #uplpading 480p
-cd ytplaylist && ls -tr | sed ':g' > playlist.txt
+cd ytplaylist && ls -1v | sed ':g' > playlist.txt
 input="playlist.txt"
 echo uploading 480p
 while IFS= read -r line
