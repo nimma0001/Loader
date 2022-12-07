@@ -4,7 +4,7 @@ mkdir -p ytplaylist
 echo downloading 480p
 yt-dlp -f 'bv*[height=480]+ba' $1 -P ytplaylist -o '%(title)s%(resolution)s.%(ext)s'
 #uplpading 480p
-cd ytplaylist && ls -tr | find *.* | sed ':g' > playlist.txt && cd
+cd ytplaylist && ls -1v | sed ':g' > playlist.txt && cd
 input="ytplaylist/playlist.txt"
 echo uploading 480p
 while IFS= read -r line
@@ -18,7 +18,7 @@ echo "done 480p"
 #uploading 720p
 echo downloading 720p
 yt-dlp -f 'bv*[height=720]+ba' $1 -P ytplaylist -o '%(title)s%(resolution)s.%(ext)s'
-cd ytplaylist && ls -tr | find *.* | sed ':g' > playlist.txt && cd
+cd ytplaylist && ls -1v | sed ':g' > playlist.txt && cd
 input="ytplaylist/playlist.txt"
 echo uploading 720p
 while IFS= read -r line
@@ -32,7 +32,7 @@ echo "done 720p"
 #uploadong 1080p
 echo downloading 1080p videos
 yt-dlp -f 'bv*[height=1080]+ba' $1 -P ytplaylist -o '%(title)s%(resolution)s.%(ext)s'
-cd ytplaylist && ls -tr | find *.* | sed ':g' > playlist.txt && cd
+cd ytplaylist && ls -1v| sed ':g' > playlist.txt && cd
 input="ytplaylist/playlist.txt"
 echo uploading 1080p
 while IFS= read -r line
