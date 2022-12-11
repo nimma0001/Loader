@@ -10,6 +10,7 @@ RUN apt-get -qq install -y --no-install-recommends \
     curl \
     git \
     gnupg2 \
+    rename \
     unzip \
     wget \
     wget2 \
