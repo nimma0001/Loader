@@ -2,7 +2,7 @@ from pydrive2.auth import GoogleAuth
 from pydrive2.drive import GoogleDrive
 import argparse
 import subprocess
-frpm datetime import date
+from datetime import date
 
 parser = argparse.ArgumentParser(description='google rive upload and download')
 parser.add_argument("-l", "--links", help="Prints the supplied argument.", nargs='*')
@@ -16,6 +16,7 @@ for arg in args.links:
     link = arg.split('=')[1]
     file = drive.CreateFile({'id': link})
     name = file['title']
+    print('downloading', name)
     name = name.lower().replace('1337xhd.', '').replace('mlsbd.shop', ' ').replace('shop',' ').replace('-', ' ').replace('  ', '').strip()
     file.GetContentFile(name, acknowledge_abuse=True)
     subprocess.call(['bash', 'did.sh', name, date.today().strftime('%d')])
