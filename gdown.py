@@ -30,6 +30,6 @@ for arg in args.links:
     name = file['title']
     name = name.lower().replace('1337xhd.', '').replace('mlsbd.shop', ' ').replace('shop',' ').replace('-', ' ').replace('  ', '').strip()
     file.GetContentFile(name, acknowledge_abuse=True)
-    subprocess.call(['bash', 'did.sh', name, date.today().strftime('%d')])
+    subprocess.call(['bash', 'it.sh', name, date.today().strftime('%d')])
 
     # file.delete()
