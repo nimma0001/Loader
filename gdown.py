@@ -37,7 +37,7 @@ for arg in args.links:
     file.GetContentFile(name, acknowledge_abuse=True)
     drive = subprocess.check_output(['rclone', 'copy', name, 'one:Public/Dec/' + date.today().strftime('%d')])
     pixel_drain = subprocess.check_output(['curl', '-g', 'https://pixeldrain.com/api/file/', '-u:8e312a99-f6af-4e4d-bd43-04721db3fb61', '--upload-file', name])
-    print(data)
+    print(pixel_drain)
     all_link[name[:6]] = MESSAGE
     # if '480p' in name:
     #     all_links[name[:6]][480] = data
