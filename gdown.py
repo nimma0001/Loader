@@ -53,10 +53,10 @@ for arg in args.links:
             all_link[name[:6]] = all_link[name[:6]].replace('480p_r', 'https://allinonepaid.vercel.app/Public/Jan/'+date.today().strftime('%d')+'/'+name.replace(' ', '%20'))
         if '720p' in name:
             all_link[name[:6]] = all_link[name[:6]].replace('720_r', f'https://pixeldrain.com/u/{pixel_link}')
-            all_link[name[:6]].replace('720p_r', 'https://allinonepaid.vercel.app/Public/Jan/'+date.today().strftime('%d')+'/'+name.replace(' ', '%20'))
+            all_link[name[:6]] = all_link[name[:6]].replace('720p_r', 'https://allinonepaid.vercel.app/Public/Jan/'+date.today().strftime('%d')+'/'+name.replace(' ', '%20'))
         if '1080p' in name:
             all_link[name[:6]] = all_link[name[:6]].replace('1080_r', f'https://pixeldrain.com/u/{pixel_link}')
-            all_link[name[:6]].replace('1080p_r', 'https://allinonepaid.vercel.app/Public/Jan/'+date.today().strftime('%d')+'/'+name.replace(' ', '%20'))
+            all_link[name[:6]] = all_link[name[:6]].replace('1080p_r', 'https://allinonepaid.vercel.app/Public/Jan/'+date.today().strftime('%d')+'/'+name.replace(' ', '%20'))
     except Exception as e:
         print(e)
 
