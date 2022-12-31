@@ -24,12 +24,22 @@ about = drive.GetAbout()
 
 print('Current user name:{}'.format(about['name']))
 
+all_links = {}
+
 for arg in args.links:
     link = arg.split('=')[1]
     file = drive.CreateFile({'id': link})
     name = file['title']
     name = name.lower().replace('1337xhd.', '').replace('mlsbd.shop', ' ').replace('shop',' ').replace('-', ' ').replace('  ', '').strip()
     file.GetContentFile(name, acknowledge_abuse=True)
-    subprocess.call(['bash', 'it.sh', name, date.today().strftime('%d')])
-
-    # file.delete()
+    data = subprocess.check_output(['bash', 'did.sh', name, date.today().strftime('%d')])
+    print(data)
+    all_links[name[:6]] = {480: '', 720: '', 1080: ''}
+    if '480p' in name:
+        all_links[name[:6]][480] = data
+    elif '720p' in name:
+        all_links[name[:6]][720] = data
+    elif '1080p' in name:
+        all_links[name[:6]][1080] = data
+    
+    print(all_links)
