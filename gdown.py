@@ -47,14 +47,15 @@ for arg in args.links:
     #     all_links[name[:6]][1080] = data
     try:
         pixel_link = json.loads(pixel_drain.decode().replace('\n', ''))['id']
+        print(pixel_link)
         if '480p' in name:
-            all_links[name[:6]].replace('480_r', f'https://pixeldrain.com/u/{pixel_link}')
+            all_links[name[:6]] = all_links[name[:6]].replace('480_r', f'https://pixeldrain.com/u/{pixel_link}')
             all_links[name[:6]].replace('480p_r', '')
         if '720p' in name:
-            all_links[name[:6]].replace('720_r', f'https://pixeldrain.com/u/{pixel_link}')
+            all_links[name[:6]] = all_links[name[:6]].replace('720_r', f'https://pixeldrain.com/u/{pixel_link}')
             all_links[name[:6]].replace('720p_r', '')
         if '1080p' in name:
-            all_links[name[:6]].replace('1080_r', f'https://pixeldrain.com/u/{pixel_link}')
+            all_links[name[:6]] = all_links[name[:6]].replace('1080_r', f'https://pixeldrain.com/u/{pixel_link}')
             all_links[name[:6]].replace('1080p_r', '')
     except:
         pass
