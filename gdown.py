@@ -53,8 +53,9 @@ for arg in args.links:
     if '1080p' in name:
         all_links[name[:6]].replace('1080_r', '')
         all_links[name[:6]].replace('1080p_r', '')
-    print(all_links[name[:6]])
 
-# for name, link in all_link.items():
+for name, link in all_link.items():
+    print(name)
+    print(link)
 #     curl -s -X POST $URL -d chat_id=$ID -d text=name
 #     curl -s -X POST $URL -d chat_id=$ID -d text=link
