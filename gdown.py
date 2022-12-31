@@ -5,11 +5,11 @@ import subprocess
 import json
 from oauth2client.service_account import ServiceAccountCredentials
 from datetime import date
+import requests
 
 # bot settings
-TOKEN="YOUR_TOKEN" 
-ID="YOUR_ID"
-URL="https://api.telegram.org/bot$TOKEN/sendMessage"
+BOT_TOKEN = '1901834675:AAECWVgpRVNwGPW4EFAH7ILSQzSOIMxUxF4'
+CHAT_ID = '691522795'
 
 
 # command parser
@@ -28,7 +28,14 @@ drive = GoogleDrive(gauth)
 # bot message
 MESSAGE = "Screenshot 👉\nPixeldrain 👇👇👇👇\n480p👉 480_r\n720p👉 720_r\n1080p👉 1080_r\n-----------------------------\n\nOffical Site 👇👇👇👇\n480p👉 480p_r\n720p👉 720p_r\n1080p👉 1080p_r\n\nPASSWORD 👉 https://t.me/c/1227529573/1207"
 all_link = {}
-# loop for handling update
+# loop for handling update and function for message
+
+def send_message(bot_token, chat_id, message):
+    send_message_url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
+    data = {'chat_id': chat_id, 'text': message}
+    response = requests.post(send_message_url, data=data)
+    return response
+
 for arg in args.links:
     link = arg.split('=')[1]
     file = drive.CreateFile({'id': link})
@@ -61,7 +68,5 @@ for arg in args.links:
         print(e)
 
 for name, link in all_link.items():
-    print(name)
-    print(link)
-#     curl -s -X POST $URL -d chat_id=$ID -d text=name
-#     curl -s -X POST $URL -d chat_id=$ID -d text=link
+    send_message(BOT_TOKEN, CHAT_ID, name)
+    send_message(BOT_TOKEN, CHAT_ID, link)
