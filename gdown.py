@@ -2,6 +2,7 @@ from pydrive2.auth import GoogleAuth
 from pydrive2.drive import GoogleDrive
 import argparse
 import subprocess
+import json
 from oauth2client.service_account import ServiceAccountCredentials
 from datetime import date
 
@@ -34,7 +35,8 @@ for arg in args.links:
     name = file['title']
     name = name.lower().replace('1337xhd.', '').replace('mlsbd.shop', ' ').replace('shop',' ').replace('-', ' ').replace('  ', '').strip()
     file.GetContentFile(name, acknowledge_abuse=True)
-    data = subprocess.check_output(['bash', 'it.sh', name, date.today().strftime('%d')])
+    drive = subprocess.check_output(['rclone', 'copy', name, 'one:Public/Dec/' + date.today().strftime('%d')])
+    pixel_drain = subprocess.check_output(['curl', '-g', 'https://pixeldrain.com/api/file/', '-u:8e312a99-f6af-4e4d-bd43-04721db3fb61', '--upload-file', name])
     print(data)
     all_link[name[:6]] = MESSAGE
     # if '480p' in name:
@@ -43,16 +45,19 @@ for arg in args.links:
     #     all_links[name[:6]][720] = data
     # elif '1080p' in name:
     #     all_links[name[:6]][1080] = data
-    
-    if '480p' in name:
-        all_links[name[:6]].replace('480_r', '')
-        all_links[name[:6]].replace('480p_r', '')
-    if '720p' in name:
-        all_links[name[:6]].replace('720_r', '')
-        all_links[name[:6]].replace('720p_r', '')
-    if '1080p' in name:
-        all_links[name[:6]].replace('1080_r', '')
-        all_links[name[:6]].replace('1080p_r', '')
+    try:
+        pixel_link = json.load(pixel_drain.decode().replace('\n', ''))['id']
+        if '480p' in name:
+            all_links[name[:6]].replace('480_r', f'https://pixeldrain.com/u/{pixel_link}')
+            all_links[name[:6]].replace('480p_r', '')
+        if '720p' in name:
+            all_links[name[:6]].replace('720_r', f'https://pixeldrain.com/u/{pixel_link}')
+            all_links[name[:6]].replace('720p_r', '')
+        if '1080p' in name:
+            all_links[name[:6]].replace('1080_r', f'https://pixeldrain.com/u/{pixel_link}')
+            all_links[name[:6]].replace('1080p_r', '')
+    except:
+        pass
 
 for name, link in all_link.items():
     print(name)
