@@ -32,7 +32,7 @@ for arg in args.links:
     name = file['title']
     name = name.lower().replace('1337xhd.', '').replace('mlsbd.shop', ' ').replace('shop',' ').replace('-', ' ').replace('  ', '').strip()
     file.GetContentFile(name, acknowledge_abuse=True)
-    data = subprocess.check_output(['bash', 'did.sh', name, date.today().strftime('%d')])
+    data = subprocess.check_output(['bash', 'it.sh', name, date.today().strftime('%d')])
     print(data)
     all_links[name[:6]] = {480: '', 720: '', 1080: ''}
     if '480p' in name:
