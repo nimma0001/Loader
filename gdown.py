@@ -57,8 +57,8 @@ for arg in args.links:
         if '1080p' in name:
             all_links[name[:6]] = all_links[name[:6]].replace('1080_r', f'https://pixeldrain.com/u/{pixel_link}')
             all_links[name[:6]].replace('1080p_r', '')
-    except:
-        pass
+    except Exception as e:
+        print(e)
 
 for name, link in all_link.items():
     print(name)
