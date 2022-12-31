@@ -36,7 +36,7 @@ for arg in args.links:
     file.GetContentFile(name, acknowledge_abuse=True)
     data = subprocess.check_output(['bash', 'it.sh', name, date.today().strftime('%d')])
     print(data)
-    all_links[name[:6]] = MESSAGE
+    all_link[name[:6]] = MESSAGE
     # if '480p' in name:
     #     all_links[name[:6]][480] = data
     # elif '720p' in name:
