@@ -41,7 +41,10 @@ def handle_domain(string: str):
             get_tld(word, fix_protocol=True)
         except:
             message += word + ' '
-    return message.strip().replace('  ', ' ')
+    if message.strip().replace('  ', ' ').endswith('.mkv') or message.strip().replace('  ', ' ').endswith('.mp4'):
+        return message.strip().replace('  ', ' ')
+    else:
+        message.strip().replace('  ', ' ') + '.mkv'
 
 
     
