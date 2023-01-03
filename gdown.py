@@ -55,7 +55,7 @@ def send_message(bot_token, chat_id, message):
     data = {'chat_id': chat_id, 'text': message, 'disable_web_page_preview': True}
     response = requests.post(send_message_url, data=data)
     return response
-
+# l = ['https://drive.google.com/u/0/uc?id=1Mk9gAUsYmXwUpzOPg9emtnD_Labvw1LR']s
 remember = {}
 for arg in args.links:
     link = arg.split('=')[1]
@@ -71,7 +71,8 @@ for arg in args.links:
         pixel_drain = subprocess.check_output(['curl', '-g', 'https://pixeldrain.com/api/file/', '-u:8e312a99-f6af-4e4d-bd43-04721db3fb61', '--upload-file', name])
         print(pixel_drain)
         
-        if name[:6] in remember.keys():
+        if name[:6].lower().strip() in remember.keys():
+            remember[name[:6].lower().strip()]
             all_link[name[:6].lower().strip()] = remember[name[:6].lower().strip()]
         else:
             all_link[name[:6].lower().strip()] = MESSAGE
@@ -86,18 +87,19 @@ for arg in args.links:
         pixel_link = json.loads(pixel_drain.decode().replace('\n', ''))['id']
         print(pixel_link)
         if '480p' in name:
-            all_link[name[:6]] = all_link[name[:6]].replace('480_r', f'https://pixeldrain.com/u/{pixel_link}')
-            all_link[name[:6]] = all_link[name[:6]].replace('480p_r', 'https://allinonepaid.vercel.app/Public/2023/Jan/'+date.today().strftime('%d')+'/'+name.replace(' ', '%20'))
+            all_link[name[:6].lower().strip()] = all_link[name[:6].lower().strip()].replace('480_r', f'https://pixeldrain.com/u/{pixel_link}')
+            all_link[name[:6].lower().strip()] = all_link[name[:6].lower().strip()].replace('480p_r', 'https://allinonepaid.vercel.app/Public/2023/Jan/'+date.today().strftime('%d')+'/'+name.replace(' ', '%20'))
         if '720p' in name:
-            all_link[name[:6]] = all_link[name[:6]].replace('720_r', f'https://pixeldrain.com/u/{pixel_link}')
-            all_link[name[:6]] = all_link[name[:6]].replace('720p_r', 'https://allinonepaid.vercel.app/Public/2023/Jan/'+date.today().strftime('%d')+'/'+name.replace(' ', '%20'))
+            all_link[name[:6].lower().strip()] = all_link[name[:6].lower().strip()].replace('720_r', f'https://pixeldrain.com/u/{pixel_link}')
+            all_link[name[:6].lower().strip()] = all_link[name[:6].lower().strip()].replace('720p_r', 'https://allinonepaid.vercel.app/Public/2023/Jan/'+date.today().strftime('%d')+'/'+name.replace(' ', '%20'))
         if '1080p' in name:
-            all_link[name[:6]] = all_link[name[:6]].replace('1080_r', f'https://pixeldrain.com/u/{pixel_link}')
-            all_link[name[:6]] = all_link[name[:6]].replace('1080p_r', 'https://allinonepaid.vercel.app/Public/2023/Jan/'+date.today().strftime('%d')+'/'+name.replace(' ', '%20'))
+            all_link[name[:6].lower().strip()] = all_link[name[:6].lower().strip()].replace('1080_r', f'https://pixeldrain.com/u/{pixel_link}')
+            all_link[name[:6].lower().strip()] = all_link[name[:6].lower().strip()].replace('1080p_r', 'https://allinonepaid.vercel.app/Public/2023/Jan/'+date.today().strftime('%d')+'/'+name.replace(' ', '%20'))
     except Exception as e:
         print(e)
     try:
         remember[name[:6].lower().strip()] = all_link[name[:6].lower().strip()]
+        all_link[name[:6].lower().strip()]
     except:
         pass
 
