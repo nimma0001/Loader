@@ -47,7 +47,7 @@ def handle_domain(string: str):
         message.strip().replace('  ', ' ') + '.mkv'
 
 
-    
+
 # loop for handling update and function for message
 
 def send_message(bot_token, chat_id, message):
@@ -72,10 +72,10 @@ for arg in args.links:
         print(pixel_drain)
         
         if name[:6] in remember.keys():
-            all_link[name[:6]] = remember[name[:6]]
+            all_link[name[:6].lower().strip()] = remember[name[:6].lower().strip()]
         else:
-            all_link[name[:6]] = MESSAGE
-            remember[name[:6]] = MESSAGE
+            all_link[name[:6].lower().strip()] = MESSAGE
+            remember[name[:6].lower().strip()] = MESSAGE
         # if '480p' in name:
         #     all_links[name[:6]][480] = data
         # elif '720p' in name:
@@ -96,8 +96,11 @@ for arg in args.links:
             all_link[name[:6]] = all_link[name[:6]].replace('1080p_r', 'https://allinonepaid.vercel.app/Public/2023/Jan/'+date.today().strftime('%d')+'/'+name.replace(' ', '%20'))
     except Exception as e:
         print(e)
-    
-    remember[name[:6]] = all_link[name[:6]]
+    try:
+        remember[name[:6].lower().strip()] = all_link[name[:6].lower().strip()]
+    except:
+        pass
+
 try:
     for name, link in all_link.items():
         new_message = link.replace('480_r', ' ').replace('720_r', ' ').replace('1080_r', ' ').replace('480p_r', ' ').replace('720p_r', ' ').replace('1080p_r', ' ')
