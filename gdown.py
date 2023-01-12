@@ -37,12 +37,19 @@ def handle_domain(string: str):
     string = string.replace('-', ' ').split(' ')
     message = '' 
     for word in string:
-        try:
-            get_tld(word, fix_protocol=True)
-        except:
+        if '.' in word:
+            try:
+                get_tld(word, fix_protocol=True)
+            except:
+                message += word + ' '
+        else:
             message += word + ' '
     if message.strip().replace('  ', ' ').endswith('.mkv') or message.strip().replace('  ', ' ').endswith('.mp4'):
-        return message.strip().replace('  ', ' ')
+        message2 = message.strip().replace('.mkv', '').replace('.mp4', '').split(' ')[-1]
+        if '.' in message2:
+            return message.strip().replace(message2, ' ').replace('  ', ' ')
+        else:
+            message.strip().replace('  ', ' ')
     else:
         message.strip().replace('  ', ' ') + '.mkv'
 
