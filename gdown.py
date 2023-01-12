@@ -49,9 +49,9 @@ def handle_domain(string: str):
         if '.' in message2:
             return message.strip().replace(message2, ' ').replace('  ', ' ').replace('  ', ' ').strip()
         else:
-            message.strip().replace('  ', ' ').strip()
+           return message.strip().replace('  ', ' ').strip()
     else:
-        message.strip().replace('  ', ' ') + '.mkv'
+        return message.strip().replace('  ', ' ') + '.mkv'
 
 
 
