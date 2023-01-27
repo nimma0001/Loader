@@ -9,8 +9,8 @@ from datetime import date
 import requests
 
 # bot settings
-BOT_TOKEN = '1901834675:AAECWVgpRVNwGPW4EFAH7ILSQzSOIMxUxF4'
-CHAT_ID = '691522795'
+BOT_TOKEN = '5971881643:AAEXU3vJGLSy7JMsyKbI7TpcdwGXv_Hlr-U'
+CHAT_ID = '5867233658'
 
 
 # command parser
